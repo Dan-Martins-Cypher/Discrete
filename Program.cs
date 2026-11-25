@@ -103,7 +103,10 @@ namespace Discrete {
     //      }
    //           return true;
   //      }
+
+        //--------
 // TENTATIVA DE REDUZIR O TEMPO DESSA BOMBA (O(N^3) VSF COMO TU PROGRAMOU ALGO TAO BURRO MLKKKKKKJJJ) 
+       // CORRIGIDO -> O(N^2)
    static bool transitiva(int[,] matriz){
   int tamanho = matriz.GetLength(0);
   List<(int X, int Y)> pontos_true = new List<(int, int)>;

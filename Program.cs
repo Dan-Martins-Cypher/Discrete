@@ -84,25 +84,25 @@ namespace Discrete {
         }
             
 // SEPARAÇÃO ----------------------
-        //  // O(N^3)
-            static bool transitiva(int[,] matriz)
-        {
-            int tamanho = matriz.GetLength(0);
-            for (int i = 0; i < tamanho; i++)
-            {
-                for (int j = 0; j < tamanho; j++)
-                {
-                    for (int k = 0; k < tamanho; k++)
-                    {
-                        if (matriz[i, j] == 1 && matriz[j, k] == 1 && matriz[i, k] != 1)
-                        {
-                            return false;
-                        }
-                    }
-                }
-            }
-            return true;
-        }
+        // ANTIGA FUNÇÃO PRA VERIFICAR TRANSITIVIDADE O(N^3)
+   //         static bool transitiva(int[,] matriz)
+  //         {
+         //       int tamanho = matriz.GetLength(0);
+        //      for (int i = 0; i < tamanho; i++)
+       //       {
+      //            for (int j = 0; j < tamanho; j++)
+     //           {
+    //               for (int k = 0; k < tamanho; k++)
+              //      {
+             //           if (matriz[i, j] == 1 && matriz[j, k] == 1 && matriz[i, k] != 1)
+            //            {
+           //              return false;
+       //               }
+      //              }
+     //           }
+    //      }
+   //           return true;
+  //      }
 // TENTATIVA DE REDUZIR O TEMPO DESSA BOMBA (O(N^3) VSF COMO TU PROGRAMOU ALGO TAO BURRO MLKKKKKKJJJ) 
    static bool transitiva(int[,] matriz){
   int tamanho = matriz.GetLength(0);
@@ -118,13 +118,25 @@ namespace Discrete {
                 }
          }
 
-       for (int i=0, i<pontos_true.count; i++){
-        if ( (pontos_true.X==1 && pontos_true.Y==1) &&  //ver como terminar essa verificaçao   
-            ){
-            return false;
-       }
-           return true;
+foreach (var ponto in pontos_true)
+    {
+        int i = ponto.X;
+        int j = ponto.Y;
+
+        foreach (var proximo in pontos_true)
+        {
+            if (proximo.X == j)
+            {
+                int k = proximo.Y;
+
+                if (!pontos_true.Contains((i, k)))
+                    return false;
+            }
         }
+    }
+
+    return true;
+}
 // SEPARAÇÃO ----------------------
         static bool relacaoequivalente(int[,] matriz)
         {
